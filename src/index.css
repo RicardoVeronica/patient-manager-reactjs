@@ -85,6 +85,7 @@ input[type="time"] {
 .alerta-error {
   background-color: white;
   color: red;
+  border: solid 3px red;
   padding: 1rem;
   font-size: 2rem;
   text-transform: uppercase;

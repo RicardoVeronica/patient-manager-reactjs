@@ -3,8 +3,8 @@ import Error from './Error'
 import { nanoid } from 'nanoid'
 
 function Form(){
-  const [admission, setAdmission] = useState({
-    patient: "",
+  const [patient, setPatient] = useState({
+    name: "",
     family: "",
     date: "",
     time: "",
@@ -13,11 +13,11 @@ function Form(){
 
   const [error, setError] = useState(false)
 
-  const { patient, family, date, time, diagnosis } = admission
+  const { name, family, date, time, diagnosis } = patient
 
   const handleChange = (e) => {
-    setAdmission({
-      ...admission,
+    setPatient({
+      ...patient,
       [e.target.name]: e.target.value
     })
   }
@@ -25,7 +25,7 @@ function Form(){
   const handleSubmit = (e) => {
     e.preventDefault()
     if (
-      patient.trim() === "" ||
+      name.trim() === "" ||
       family.trim() === "" ||
       date.trim() === "" ||
       time.trim() === "" ||
@@ -37,9 +37,9 @@ function Form(){
 
     setError(false)
 
-    admission.id = nanoid()
+    patient.id = nanoid()
 
-    console.log(admission.id);
+    console.log(patient);
   }
 
   return(
@@ -49,12 +49,12 @@ function Form(){
       { error && <Error /> }
 
       <form onSubmit={ handleSubmit }>
-        <label htmlFor="patient">Nombre del Paciente</label>
+        <label htmlFor="name">Nombre del Paciente</label>
         <input
           className="u-full-width"
-          id="patient"
+          id="name"
           type="text"
-          name="patient"
+          name="name"
           placeholder="Nombre del paciente"
           onChange={ handleChange }
         />

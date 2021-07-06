@@ -12,9 +12,16 @@ function App() {
     ])
   }
 
+  const deletePatient = (id) => {
+    const newList = list.filter(patient => patient.id !== id)
+    setList(newList)
+  }
+
+  const title = list.length === 0 ? "No hay pacientes" : "Administrador"
+
   return (
     <>
-      <h1>administrador de citas</h1>
+      <h1>ingresos hospitalarios</h1>
 
       <div className="container">
         <div className="row">
@@ -24,11 +31,12 @@ function App() {
             />
           </div>
           <div className="one-half column">
-            <h2>administra tus citas</h2>
+            <h2>{ title }</h2>
             { list.map(patient => (
               <Appointment
                 key={ patient.id }
                 patient={ patient }
+                deletePatient={ deletePatient }
               />
             )) }
           </div>

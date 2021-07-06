@@ -52,7 +52,7 @@ function Form({ createList }){
 
   return(
     <>
-      <h2>Ingreso</h2>
+      <h2>Agregar Paciente</h2>
 
       { error && <Error /> }
 

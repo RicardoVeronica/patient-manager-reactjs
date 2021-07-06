@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import Error from './Error'
 import { nanoid } from 'nanoid'
 
-function Form(){
+function Form({ createList }){
   const [patient, setPatient] = useState({
     name: "",
     family: "",
@@ -39,7 +39,15 @@ function Form(){
 
     patient.id = nanoid()
 
-    console.log(patient);
+    createList(patient)
+
+    setPatient({
+      name: "",
+      family: "",
+      date: "",
+      time: "",
+      diagnosis: "",
+    })
   }
 
   return(
@@ -56,6 +64,7 @@ function Form(){
           type="text"
           name="name"
           placeholder="Nombre del paciente"
+          value={ name }
           onChange={ handleChange }
         />
         <label htmlFor="family">Nombre del Familiar</label>
@@ -65,6 +74,7 @@ function Form(){
           type="text"
           name="family"
           placeholder="Nombre del familiar"
+          value={ family }
           onChange={ handleChange }
         />
         <label htmlFor="date">Fecha de Ingreso</label>
@@ -73,6 +83,7 @@ function Form(){
           id="date"
           type="date"
           name="date"
+          value={ date }
           onChange={ handleChange }
         />
         <label htmlFor="time">Hora de Ingreso</label>
@@ -81,13 +92,15 @@ function Form(){
           id="time"
           type="time"
           name="time"
+          value={ time }
           onChange={ handleChange }
         />
-        <label htmlFor="diagnosis">Diasnoctico</label>
+        <label htmlFor="diagnosis">Diagnostico</label>
         <textarea
           className="u-full-width"
           id="diagnosis"
           name="diagnosis"
+          value={ diagnosis }
           onChange={ handleChange }
         ></textarea>
 

@@ -1,9 +1,17 @@
 import Form from './componets/Form'
 import Appointment from './componets/Appointment'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+let initialStorage = JSON.parse(localStorage.getItem("patients"))
+
+if(!initialStorage) { initialStorage = [] }
 
 function App() {
-  const [list, setList] = useState([])
+  const [list, setList] = useState(initialStorage)
+
+  useEffect(() => {
+    if(initialStorage) localStorage.setItem("patients", JSON.stringify(list))
+  })
 
   const createList = (newPatient) => {
     setList([

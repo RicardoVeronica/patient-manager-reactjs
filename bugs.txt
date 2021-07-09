@@ -1,0 +1,9 @@
+if you have this error:
+
+onloadwff.js:71 Assertion failed: Input argument is not an HTMLInputElement
+
+Turn off LastPass =P
+
+Source:
+
+https://github.com/mui-org/material-ui/issues/14860
